@@ -29,9 +29,8 @@
     <div>
       <a href="#" target="_blank" class="hover">Donate</a>
     </div> -->
-
-    <notification />
   </footer>
+  <notification />
 </template>
 
 <script lang="ts">
