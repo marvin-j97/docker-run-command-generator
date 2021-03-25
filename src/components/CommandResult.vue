@@ -8,18 +8,6 @@
       {{ hasError ? "Could not generate output: invalid inputs" : command }}
     </div>
     <div style="flex-grow: 1"></div>
-    <div style="margin-left: 10px; height: 24px" @click="() => copyCommand()">
-      <svg
-        class="icon hover"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z"
-        ></path>
-        <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z"></path>
-      </svg>
-    </div>
     <div style="margin-left: 10px; height: 24px" @click="() => copyShareLink()">
       <svg
         class="icon hover"
