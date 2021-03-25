@@ -76,7 +76,7 @@ export default defineComponent({
 
 <style>
 .error-message {
-  color: #ff4055 !important;
+  color: #ff3f55 !important;
   margin-top: 5px;
   font-size: 1rem;
   font-family: monospace;
@@ -90,7 +90,7 @@ export default defineComponent({
 }
 
 input.error {
-  border-left: 4px solid #ff4055;
+  border-left: 4px solid #ff3f55;
 }
 
 input:focus {

@@ -37,7 +37,7 @@ export default defineComponent({
   left: 50%;
   transform: translateX(-50%);
   color: black;
-  background: #88ffaa;
+  background: #a1ff3f;
   min-width: 250px;
   padding: 12px;
   border-radius: 5px;

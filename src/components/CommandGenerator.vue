@@ -83,7 +83,21 @@
     <hr />
 
     <div>
-      <div class="label" style="margin-bottom: 20px">Volumes</div>
+      <div style="display: flex; align-items: center; margin-bottom: 20px">
+        <div class="label" style="margin-right: 15px">Volumes</div>
+        <my-button
+          color="#4055ff"
+          style="color: #fafafa"
+          @click="
+            state.volumes.push({
+              value: 'host:container',
+              id: Math.random().toString(36),
+            })
+          "
+        >
+          Add
+        </my-button>
+      </div>
       <div v-for="(volume, i) in state.volumes" :key="volume.id">
         <div
           style="
@@ -100,27 +114,31 @@
             style="margin-right: 10px"
           />
           <div style="flex-grow: 1"></div>
-          <button style="height: 30px" @click="state.volumes.splice(i, 1)">
-            - Remove
-          </button>
+          <my-button color="#ff3f55" @click="state.volumes.splice(i, 1)">
+            Remove
+          </my-button>
         </div>
       </div>
-      <button
-        @click="
-          state.volumes.push({
-            value: 'host:container',
-            id: Math.random().toString(36),
-          })
-        "
-      >
-        + Add
-      </button>
     </div>
 
     <hr />
 
     <div>
-      <div class="label" style="margin-bottom: 20px">Ports</div>
+      <div style="display: flex; align-items: center; margin-bottom: 20px">
+        <div class="label" style="margin-right: 15px">Ports</div>
+        <my-button
+          color="#4055ff"
+          style="color: #fafafa"
+          @click="
+            state.ports.push({
+              value: 'host:container',
+              id: Math.random().toString(36),
+            })
+          "
+        >
+          Add
+        </my-button>
+      </div>
       <div v-for="(port, i) in state.ports" :key="port.id">
         <div
           style="
@@ -137,27 +155,33 @@
             style="margin-right: 10px"
           />
           <div style="flex-grow: 1"></div>
-          <button style="height: 30px" @click="state.ports.splice(i, 1)">
-            - Remove
-          </button>
+          <my-button color="#ff3f55" @click="state.ports.splice(i, 1)">
+            Remove
+          </my-button>
         </div>
       </div>
-      <button
-        @click="
-          state.ports.push({
-            value: 'host:container',
-            id: Math.random().toString(36),
-          })
-        "
-      >
-        + Add
-      </button>
     </div>
 
     <hr />
 
     <div>
-      <div class="label" style="margin-bottom: 20px">Environment variables</div>
+      <div style="display: flex; align-items: center; margin-bottom: 20px">
+        <div class="label" style="margin-right: 15px">
+          Environment variables
+        </div>
+        <my-button
+          color="#4055ff"
+          style="color: #fafafa"
+          @click="
+            state.envVars.push({
+              key: '',
+              value: '',
+              id: Math.random().toString(36),
+            })
+          "
+          >Add</my-button
+        >
+      </div>
       <div v-for="(envVar, i) in state.envVars" :key="envVar.id">
         <div
           style="
@@ -180,22 +204,11 @@
             style="margin-right: 10px"
           />
           <div style="flex-grow: 1"></div>
-          <button style="height: 30px" @click="state.envVars.splice(i, 1)">
-            - Remove
-          </button>
+          <my-button color="#ff3f55" @click="state.envVars.splice(i, 1)">
+            Remove
+          </my-button>
         </div>
       </div>
-      <button
-        @click="
-          state.envVars.push({
-            key: '',
-            value: '',
-            id: Math.random().toString(36),
-          })
-        "
-      >
-        + Add
-      </button>
     </div>
 
     <hr />
@@ -212,16 +225,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Checkbox from "./Checkbox.vue";
-import TextField from "./TextField.vue";
 import { useGenerator } from "../generator";
 import CommandResult from "./CommandResult.vue";
 
 export default defineComponent({
   name: "CommandGenerator",
   components: {
-    Checkbox,
-    TextField,
     CommandResult,
   },
   setup() {

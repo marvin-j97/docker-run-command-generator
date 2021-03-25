@@ -44,6 +44,11 @@ export default defineComponent({
     CommandGenerator,
     Notification,
   },
+  setup() {
+    return {
+      onclick: () => alert("hello"),
+    };
+  },
 });
 </script>
 
@@ -66,7 +71,7 @@ main {
 
 a {
   text-decoration: none;
-  color: #0df;
+  color: #79acff;
   font-family: monospace;
   font-weight: bold;
 }
