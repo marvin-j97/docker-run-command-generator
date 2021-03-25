@@ -18,7 +18,7 @@
   <footer>
     <div>
       <a
-        href="https://github.com/marvin-j97/docker-command-generator"
+        href="https://github.com/marvin-j97/docker-run-command-generator"
         target="_blank"
         class="hover"
       >
