@@ -42,12 +42,18 @@
       <text-field
         v-model="state.containerCommand"
         placeholder="Command (optional)"
-        style="width: 100%"
+        style="width: 100%; margin-bottom: 20px"
       />
       <text-field
         v-model="state.containerName"
         placeholder="Container name"
         label="Container name (optional)"
+        style="width: 100%; margin-bottom: 20px"
+      />
+      <text-field
+        v-model="state.envFile"
+        placeholder="Environment file"
+        label="Environment file (optional)"
         style="width: 100%; margin-bottom: 20px"
       />
       <text-field

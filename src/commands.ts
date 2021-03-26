@@ -54,4 +54,7 @@ export const flags: Record<string, IFlag> = {
   mount: {
     flag: ["--mount", "--mount"],
   },
+  envFile: {
+    flag: ["--env-file", "--env-file"],
+  },
 };

@@ -31,6 +31,8 @@ export function useGenerator() {
     containerCommand: "",
     mount: "",
 
+    envFile: "",
+
     envVars: [] as { key: string; value: string; id: string }[],
     volumes: [] as { id: string; value: string }[],
     ports: [] as { id: string; value: string }[],
@@ -78,6 +80,7 @@ export function useGenerator() {
       getStringFlag("restart", state.restartPolicy, useLongFlags.value),
       getStringFlag("pull", state.pullPolicy, useLongFlags.value),
       getStringFlag("workDir", state.workDir, useLongFlags.value),
+      getStringFlag("envFile", state.envFile, useLongFlags.value),
 
       getArrayFlag(
         "env",
