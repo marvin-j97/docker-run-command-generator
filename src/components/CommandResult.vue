@@ -1,14 +1,11 @@
 <template>
-  <div class="label" style="margin-bottom: 10px">Result</div>
-  <div
-    class="code-block"
-    style="display: flex; align-items: center; margin-bottom: 10px"
-  >
-    <div class="hover" @click="() => copyCommand()">
+  <div class="label mb-1">Result</div>
+  <div class="flex align-center code-block mb-1">
+    <div :class="{ hover: !hasError }" @click="copy">
       {{ hasError ? "Could not generate output: invalid inputs" : command }}
     </div>
     <div style="flex-grow: 1"></div>
-    <div style="margin-left: 10px; height: 24px" @click="() => copyShareLink()">
+    <div class="ml-1" style="height: 24px" @click="() => copyShareLink()">
       <svg
         class="icon hover"
         viewBox="0 0 20 20"
@@ -46,6 +43,16 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {},
+  setup(props) {
+    function copy() {
+      if (props.hasError) {
+        return;
+      }
+
+      props.copyCommand();
+    }
+
+    return { copy };
+  },
 });
 </script>

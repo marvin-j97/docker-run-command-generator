@@ -30,22 +30,26 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
+@import "../colors.scss";
+@import "../layout.scss";
+
 .notification {
+  @extend .flex;
+  @extend .align-center;
+
   position: fixed;
   bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   color: black;
-  background: #a1ff3f;
+  background: $nord14;
   min-width: 250px;
   padding: 12px;
   border-radius: 5px;
   font-family: monospace;
   font-size: 1.2rem;
   font-weight: bold;
-  display: flex;
-  align-items: center;
 }
 
 .shadow {

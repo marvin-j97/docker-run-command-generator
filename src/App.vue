@@ -9,7 +9,7 @@
       >
       generator
     </div>
-    <div style="display: flex; justify-content: center">
+    <div class="flex justify-center">
       <div>
         <a
           style="font-size: 1.1rem"
@@ -20,7 +20,7 @@
           GitHub
         </a>
       </div>
-      <div style="margin-left: 10px; margin-right: 10px; opacity: 0.5">|</div>
+      <div class="ml-1 mr-1" style="opacity: 0.5">|</div>
       <div>
         <a
           style="font-size: 1.1rem"
@@ -32,9 +32,9 @@
       </div>
     </div>
   </header>
-  <main style="margin-top: 20px">
-    <div style="width: 550px">
-      <command-generator style="margin-bottom: 40px" />
+  <main>
+    <div class="content-wrapper">
+      <command-generator class="mb-4" />
     </div>
   </main>
   <footer>
@@ -47,7 +47,7 @@
         GitHub
       </a>
     </div>
-    <div style="margin-left: 10px; margin-right: 10px; opacity: 0.5">|</div>
+    <div class="ml-1 mr-1" style="opacity: 0.5">|</div>
     <div>
       <a
         href="https://www.buymeacoffee.com/marvin.j97"
@@ -75,15 +75,31 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
+@import "./colors.scss";
+@import "./spacers.scss";
+@import "./layout.scss";
+
+.content-wrapper {
+  width: 600px;
+}
+
 * {
   box-sizing: border-box;
 }
 
+hr {
+  @extend .mt-3;
+  @extend .mb-3;
+
+  border: 1px solid $nord0;
+}
+
 main {
+  @extend .flex;
+  @extend .justify-center;
+
   padding: 20px;
-  display: flex;
-  justify-content: center;
 }
 
 .title {
@@ -96,7 +112,7 @@ main {
 
 a {
   text-decoration: none;
-  color: #79acff;
+  color: $nord8;
   font-family: monospace;
   font-weight: bold;
 }
@@ -104,28 +120,29 @@ a {
 .hover {
   cursor: pointer;
   transition: filter 0.1s ease-in-out;
-}
 
-.hover:hover {
-  filter: brightness(0.66);
+  &:hover {
+    filter: brightness(0.75);
+  }
 }
 
 body {
-  background: #111114;
-  color: #fafafa;
+  background: $nord-bg;
+  color: $nord6;
   margin: 0;
 }
 
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: #222224;
-  text-align: center;
-}
+  @extend .flex;
+  @extend .justify-center;
+  @extend .align-center;
 
-footer a {
-  font-size: 1.25rem;
+  padding: 20px;
+  background: $nord0;
+  text-align: center;
+
+  a {
+    font-size: 1.25rem;
+  }
 }
 </style>

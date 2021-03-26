@@ -29,7 +29,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss" scoped>
 .button {
   padding: 7px 8px 7px 8px;
   appearance: none;

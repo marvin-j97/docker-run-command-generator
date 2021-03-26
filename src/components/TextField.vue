@@ -1,25 +1,21 @@
 <template>
   <div>
-    <div
-      v-if="!hideLabel"
-      class="label"
-      style="margin-bottom: 5px; position: relative"
-    >
+    <div v-if="!hideLabel" class="label mb-1">
       {{ label || placeholder }}
     </div>
     <input
-      class="code-block"
+      spellcheck="false"
+      class="code-block full-w"
       type="text"
       v-model="innerValue"
       :placeholder="placeholder"
       @input="updateByEvent"
-      style="width: 100%"
       :class="{ error }"
     />
-    <div v-if="error" class="error-message">
+    <div v-if="error" class="mt-0 error-message">
       {{ error }}
     </div>
-    <div v-else-if="hint" class="hint">
+    <div v-else-if="hint" class="mt-0 hint">
       {{ hint }}
     </div>
   </div>
@@ -74,40 +70,40 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../colors.scss";
+@import "../layout.scss";
+
 .error-message {
-  color: #ff3f55 !important;
-  margin-top: 5px;
+  color: $nord11 !important;
   font-size: 1rem;
   font-family: monospace;
 }
 
 .hint {
-  margin-top: 5px;
   font-size: 1rem;
   font-family: monospace;
   opacity: 0.4 !important;
 }
 
-input.error {
-  border-left: 4px solid #ff3f55;
-}
-
-input:focus {
-  background: #282828;
-}
-
-input:hover {
-  filter: brightness(0.9);
-}
-
-textarea,
+input textarea,
 input {
   outline: none;
-  transition: background-color 0.1s ease;
-  transition: border-color 0.15s ease;
-  transition: filter 0.1s ease;
+  transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out,
+    filter 0.1s ease-in-out;
   border: none;
   border-left: 4px solid transparent;
+
+  &.error {
+    border-left: 4px solid $nord11;
+  }
+
+  &:focus {
+    background-color: $nord0;
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+  }
 }
 </style>

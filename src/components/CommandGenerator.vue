@@ -1,98 +1,100 @@
 <template>
   <div>
-    <command-result
-      :command="command"
-      :hasError="hasError"
-      :copyCommand="copyCommand"
-      :copyShareLink="copyShareLink"
-    />
-    <checkbox v-model="useLongFlags" label="Use long flags" />
+    <my-section bottom>
+      <command-result
+        :command="command"
+        :hasError="hasError"
+        :copyCommand="copyCommand"
+        :copyShareLink="copyShareLink"
+      />
+      <checkbox v-model="useLongFlags" label="Use long flags" />
+    </my-section>
 
-    <hr />
+    <my-section bottom>
+      <text-field
+        v-model="state.imageId"
+        placeholder="Image"
+        class="full-w"
+        :error="!isValidImage ? 'Invalid image' : ''"
+      />
+    </my-section>
 
-    <text-field
-      v-model="state.imageId"
-      placeholder="Image"
-      style="width: 100%; margin-bottom: 20px"
-      :error="!isValidImage ? 'Invalid image' : ''"
-    />
-
-    <hr />
-
-    <div>
-      <checkbox v-model="state.detach" label="Detach" />
+    <my-section bottom>
+      <checkbox class="mb-1" v-model="state.detach" label="Detach" />
       <checkbox
+        class="mb-1"
         v-model="state.disableHealthcheck"
         label="Disable health check"
       />
-      <checkbox v-model="state.disableOOMKiller" label="Disable OOM Killer" />
-      <checkbox v-model="state.interactive" label="Interactive" />
-      <checkbox v-model="state.privileged" label="Privileged" />
-      <checkbox v-model="state.readOnly" label="Read-only" />
       <checkbox
+        class="mb-1"
+        v-model="state.disableOOMKiller"
+        label="Disable OOM Killer"
+      />
+      <checkbox class="mb-1" v-model="state.interactive" label="Interactive" />
+      <checkbox class="mb-1" v-model="state.privileged" label="Privileged" />
+      <checkbox class="mb-1" v-model="state.readOnly" label="Read-only" />
+      <checkbox
+        class="mb-1"
         v-model="state.autoRemoveContainer"
         label="Remove the container when it exits"
       />
-      <checkbox v-model="state.tty" label="TTY" />
-    </div>
+      <checkbox class="mb-1" v-model="state.tty" label="TTY" />
+    </my-section>
 
-    <hr />
-
-    <div>
+    <my-section bottom>
       <text-field
+        class="mb-3 full-w"
         v-model="state.containerCommand"
         placeholder="Command (optional)"
-        style="width: 100%; margin-bottom: 20px"
       />
       <text-field
+        class="mb-3 full-w"
         v-model="state.containerName"
         placeholder="Container name"
         label="Container name (optional)"
-        style="width: 100%; margin-bottom: 20px"
       />
       <text-field
+        class="mb-3 full-w"
         v-model="state.envFile"
         placeholder="Environment file"
         label="Environment file (optional)"
-        style="width: 100%; margin-bottom: 20px"
       />
       <text-field
+        class="mb-3 full-w"
         v-model="state.mount"
         placeholder="Mount"
         label="Mount (optional)"
-        style="width: 100%; margin-bottom: 20px"
       />
       <text-field
+        class="mb-3 full-w"
         v-model="state.pullPolicy"
         placeholder="Pull policy"
         label="Pull policy (optional)"
-        style="width: 100%; margin-bottom: 20px"
         hint="Values: always, missing, never"
         :error="!isValidPullPolicy ? 'Invalid pull policy' : ''"
       />
       <text-field
+        class="mb-3 full-w"
         v-model="state.restartPolicy"
         placeholder="Restart policy"
         label="Restart policy (optional)"
-        style="width: 100%; margin-bottom: 20px"
         hint="Values: no, unless-stopped, always, on-failure[:max-retries]"
         :error="!isValidRestartPolicy ? 'Invalid restart policy' : ''"
       />
       <text-field
+        class="mb-3 full-w"
         v-model="state.workDir"
         placeholder="Working directory (optional)"
         label="Working directory (optional)"
-        style="width: 100%; margin-bottom: 20px"
       />
-    </div>
+    </my-section>
 
-    <hr />
-
-    <div>
-      <div style="display: flex; align-items: center; margin-bottom: 20px">
-        <div class="label" style="margin-right: 15px">Volumes</div>
+    <my-section bottom>
+      <div class="flex align-center mb-3">
+        <div class="label mr-2">Volumes</div>
         <my-button
-          color="#4055ff"
+          color="#5e81ac"
           style="color: #fafafa"
           @click="
             state.volumes.push({
@@ -105,35 +107,25 @@
         </my-button>
       </div>
       <div v-for="(volume, i) in state.volumes" :key="volume.id">
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 20px;
-          "
-        >
+        <div class="mb-3 flex align-center full-w">
           <text-field
             hide-label
             v-model="state.volumes[i].value"
             placeholder="Value"
-            style="margin-right: 10px"
           />
           <div style="flex-grow: 1"></div>
-          <my-button color="#ff3f55" @click="state.volumes.splice(i, 1)">
+          <my-button color="#bf616a" @click="state.volumes.splice(i, 1)">
             Remove
           </my-button>
         </div>
       </div>
-    </div>
+    </my-section>
 
-    <hr />
-
-    <div>
-      <div style="display: flex; align-items: center; margin-bottom: 20px">
-        <div class="label" style="margin-right: 15px">Ports</div>
+    <my-section bottom>
+      <div class="mb-3 flex align-center">
+        <div class="label mr-2">Ports</div>
         <my-button
-          color="#4055ff"
+          color="#5e81ac"
           style="color: #fafafa"
           @click="
             state.ports.push({
@@ -146,37 +138,25 @@
         </my-button>
       </div>
       <div v-for="(port, i) in state.ports" :key="port.id">
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 20px;
-          "
-        >
+        <div class="flex align-center full-w mb-3">
           <text-field
             hide-label
             v-model="state.ports[i].value"
             placeholder="Value"
-            style="margin-right: 10px"
           />
           <div style="flex-grow: 1"></div>
-          <my-button color="#ff3f55" @click="state.ports.splice(i, 1)">
+          <my-button color="#bf616a" @click="state.ports.splice(i, 1)">
             Remove
           </my-button>
         </div>
       </div>
-    </div>
+    </my-section>
 
-    <hr />
-
-    <div>
-      <div style="display: flex; align-items: center; margin-bottom: 20px">
-        <div class="label" style="margin-right: 15px">
-          Environment variables
-        </div>
+    <my-section bottom>
+      <div class="mb-3 flex align-center">
+        <div class="label mr-2">Environment variables</div>
         <my-button
-          color="#4055ff"
+          color="#5e81ac"
           style="color: #fafafa"
           @click="
             state.envVars.push({
@@ -189,43 +169,31 @@
         >
       </div>
       <div v-for="(envVar, i) in state.envVars" :key="envVar.id">
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 20px;
-          "
-        >
+        <div class="mb-3 flex align-center full-w">
           <text-field
             hide-label
             v-model="envVar.key"
             placeholder="Key"
-            style="margin-right: 10px"
+            class="mr-2"
           />
-          <text-field
-            hide-label
-            v-model="envVar.value"
-            placeholder="Value"
-            style="margin-right: 10px"
-          />
+          <text-field hide-label v-model="envVar.value" placeholder="Value" />
           <div style="flex-grow: 1"></div>
-          <my-button color="#ff3f55" @click="state.envVars.splice(i, 1)">
+          <my-button color="#bf616a" @click="state.envVars.splice(i, 1)">
             Remove
           </my-button>
         </div>
       </div>
-    </div>
+    </my-section>
 
-    <hr />
-
-    <command-result
-      :command="command"
-      :hasError="hasError"
-      :copyCommand="copyCommand"
-      :copyShareLink="copyShareLink"
-    />
-    <checkbox v-model="useLongFlags" label="Use long flags" />
+    <my-section bottom>
+      <command-result
+        :command="command"
+        :hasError="hasError"
+        :copyCommand="copyCommand"
+        :copyShareLink="copyShareLink"
+      />
+      <checkbox v-model="useLongFlags" label="Use long flags" />
+    </my-section>
   </div>
 </template>
 
@@ -245,13 +213,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
-hr {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  border: 1px solid #1a1a1a;
-}
-
+<style lang="scss">
 label,
 .label {
   font-size: 1.1rem;
@@ -260,7 +222,7 @@ label,
 }
 
 .code-block {
-  background: #222224;
+  background: #3b4252;
   padding: 12px;
   border-radius: 5px;
   font-family: monospace;

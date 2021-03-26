@@ -1,8 +1,5 @@
 <template>
-  <div
-    style="display: flex; align-items: center; margin-bottom: 8px"
-    @click="update(!modelValue)"
-  >
+  <div style="display: flex; align-items: center" @click="update(!modelValue)">
     <input style="margin-right: 8px" type="checkbox" v-model="innerValue" />
     <label>{{ label }}</label>
   </div>

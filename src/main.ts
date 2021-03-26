@@ -4,11 +4,13 @@ import App from "./App.vue";
 import Button from "./components/Button.vue";
 import Checkbox from "./components/Checkbox.vue";
 import TextField from "./components/TextField.vue";
+import Section from "./components/Section.vue";
 
 const app = createApp(App);
 
 app.component("MyButton", Button);
 app.component("Checkbox", Checkbox);
 app.component("TextField", TextField);
+app.component("MySection", Section);
 
 app.mount("#app");
